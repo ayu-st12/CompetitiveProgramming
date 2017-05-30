@@ -1,0 +1,261 @@
+#include<iostream>
+#include<stdio.h>
+
+using namespace std;
+
+int result();
+void welcome();
+void board();
+int tkinput(int);
+int chk(int);
+char x='1',y='2',z='3',p='4',q='5',r='6',a='7',b='8',c='9';
+
+int main()
+{ 
+
+  int pos,fk,tk,i=0,z=0;
+
+   
+   welcome();
+  while(z<10){
+     
+     board();
+ 
+     if(z==9)
+     {cout<<"\n\n\t\tIts a TIE!! ";
+      break;
+      }        
+     
+   else{
+    tk=tkinput(i);
+    fk=result(); 
+
+     if(fk==3)
+      break;
+
+     if(tk==12)
+      {z++;i++;}
+     else
+      cout<<"Position already filled! Try again.";
+       }
+   };
+  system("PAUSE"); 
+  return 0;
+  }
+
+int result()
+{ int s;
+   if(x==y && y==z && x==z)
+    {if(x=='X')
+      cout<<"WINNER OF GAME: PLAYER 1\n";
+     else
+      cout<<"WINNER OF GAME: PLAYER 2\n";
+      s=3;return s;
+     }
+  
+   else if(x==p && p==a && x==a)   
+    {if(x=='X')
+      cout<<"WINNER OF GAME: PLAYER 1\n";
+     else
+      cout<<"WINNER OF GAME: PLAYER 2\n";
+      s=3;return s;
+       }
+
+   else if(x==q && q==c && x==c)   
+    {if(x=='X')
+      cout<<"WINNER OF GAME: PLAYER 1\n";
+     else
+      cout<<"WINNER OF GAME: PLAYER 2\n";s=3;return s;
+      }
+
+   else if(y==q && q==b && y==b)   
+    {if(y=='X')
+      cout<<"WINNER OF GAME: PLAYER 1\n";
+     else
+      cout<<"WINNER OF GAME: PLAYER 2\n";s=3;return s;
+      }
+
+   else if(z==r && r==c && z==c)   
+    {if(z=='X')
+      cout<<"WINNER OF GAME: PLAYER 1\n";
+     else
+      cout<<"WINNER OF GAME: PLAYER 2\n";s=3;return s;
+      }
+
+   else if(p==q && q==r && p==r)   
+    {if(p=='X')
+      cout<<"WINNER OF GAME: PLAYER 1\n";
+     else
+      cout<<"WINNER OF GAME: PLAYER 2\n";s=3;return s;
+      }
+
+   else if(z==q && q==a && z==a)   
+    {if(z=='X')
+      cout<<"WINNER OF GAME: PLAYER 1\n";
+     else
+      cout<<"WINNER OF GAME: PLAYER 2\n";s=3;return s;
+      }
+
+   else if(a==b && b==c && a==c)   
+    {if(a=='X')
+      cout<<"WINNER OF GAME: PLAYER 1\n";
+     else
+      cout<<"WINNER OF GAME: PLAYER 2\n";s=3;
+      return s;
+    }
+   
+}
+
+int chk(int n)
+{
+   if(n==1 && (x=='X' || x=='O'))
+   return 11;
+   else if(n==2 && (y=='X' || y=='O'))
+   return 11;
+   else if(n==3 && (z=='X' || z=='O'))
+   return 11;
+   else if(n==4 && (p=='X' || p=='O'))
+   return 11;
+   else if(n==5 && (q=='X' || q=='O'))
+   return 11;
+   else if(n==6 && (r=='X' || r=='O'))
+   return 11;
+   else if(n==7 && (a=='X' || a=='O'))
+   return 11;
+   else if(n==8 && (b=='X' || b=='O'))
+   return 11;
+   else if(n==9 && (c=='X' || c=='O'))
+   return 11;
+   else
+   return 10;
+
+}
+
+int tkinput(int i)
+{ int n,rt,rtm;
+   if(i%2==0)
+     {
+     cout<<"Player 1, Enter Position: ";
+     cin>>n;
+     rt=chk(n);
+     if(rt==10)
+      {  rtm=12;
+       switch(n)
+        {
+          case 1: x='X'; break;
+          case 2: y='X'; break;
+          case 3: z='X'; break;
+          case 4: p='X'; break;
+          case 5: q='X'; break;
+          case 6: r='X'; break;
+          case 7: a='X'; break;
+          case 8: b='X'; break;
+          case 9: c='X'; break;
+        }
+       }
+      return rtm;  
+    }
+   else
+   {
+     cout<<"Player 2, Enter Position: ";
+     cin>>n;
+     rt=chk(n);
+     if(rt==10)
+      {  rtm=12;
+       switch(n)
+        {
+          case 1: x='O'; break;
+          case 2: y='O'; break;
+          case 3: z='O'; break;
+          case 4: p='O'; break;
+          case 5: q='O'; break;
+          case 6: r='O'; break;
+          case 7: a='O'; break;
+          case 8: b='O'; break;
+          case 9: c='O'; break;
+        }
+       }
+      return rtm;  
+    }    
+}
+
+void welcome()
+{
+cout<<"\n\n\n\n";
+cout<<"\t     ****** WELCOME TO THE GAME: Tic Tac Toe ****** ";
+cout<<"\n\n\t\t\t Player-1 Vs Player-2 \n";
+}
+
+void board()
+{  printf("\n\n\t\t\t  ");
+  
+  for(int l=0;l<13;)
+   {
+    if(l==0 || l==4 || l==8 || l==12)
+      for(int i=0;i<19;i++)
+       {
+         cout<<"-" ;
+         }    
+
+   if(l==1 || l==3 || l==5 || l==7 || l==9 || l==11)
+     {for(int j=0;j<19;j++)
+        {  if(j==0 || j==6 || j==12 || j==18)
+            cout<<"|";
+           if(j==1 || j==2 || j==3 || j==4 || j==5 || j==7 || j==8 || j==9 ||j==10 || j==11 || j==13 || j==14 || j==15 || j==16 || j==17)
+            cout<<" ";
+            
+            }
+       }
+
+   if(l==2)
+      for(int k=0;k<19;k++)
+        {
+           if(k==3)
+           cout<<x;
+           else if(k==0||k==6||k==12||k==18)
+           cout<<"|";
+           else if(k==9)
+           cout<<y;
+           else if(k==15)
+           cout<<z;
+           else
+           cout<<" ";
+          }
+       
+   if(l==6)
+      for(int k=0;k<19;k++)
+       {
+           if(k==3)
+           cout<<p;
+           else if(k==0||k==6||k==12||k==18)
+           cout<<"|";
+           else if(k==9)
+           cout<<q;
+           else if(k==15)
+           cout<<r;
+           else
+           cout<<" ";
+          } 
+       
+   if(l==10)
+     for(int k=0;k<19;k++)
+      {
+           if(k==3)
+           cout<<a;
+           else if(k==0||k==6||k==12||k==18)
+           cout<<"|";
+           else if(k==9)
+           cout<<b;
+           else if(k==15)
+           cout<<c;
+           else
+           cout<<" ";
+          }    
+       
+
+     l=l+1;
+     cout<<"\n\t\t\t  ";
+    }
+
+   cout<<"\n\n\n\n";
+}
